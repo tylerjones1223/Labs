@@ -35,4 +35,4 @@ def encode(alphabet, message)
   end
 end
 
-encode(my_alpha, my_input)
+#encode(my_alpha, my_input)
