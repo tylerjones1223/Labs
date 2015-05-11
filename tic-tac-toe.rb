@@ -121,8 +121,9 @@ user1_input = gets.chomp.to_s
   puts 'player 2 turn'
   answers2
 end
+tictoe(@table)
 end
 
-
+prompt(@xo)
 
 binding.pry
