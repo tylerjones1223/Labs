@@ -10,6 +10,7 @@ WINS = [[0, 1, 2], [3, 4, 5], [6, 7, 8],
 
 @player1 = []
 @player2 = []
+@cpu = []
 
 def tictoe(table)
     puts "
@@ -17,6 +18,14 @@ def tictoe(table)
      #{table[3]}  |  #{table[4]}  |  #{table[5]}
      #{table[6]}  |  #{table[7]}  |  #{table[8]}
     "
+end
+
+def cpu_player()
+  cpu_input = @table.sample.to_i
+  until cpu_input != 0
+    cpu_input
+  end
+  puts cpu_input
 end
 
 def win?(board)
@@ -30,7 +39,9 @@ def draw?(board)
 end
 
 def game_over?(board)
-  win?(board) || draw?(board)
+    if win?(board) || draw?(board)
+      puts 'Winner'
+    end
 end
 
 def user1_choice(options)
@@ -53,12 +64,17 @@ end
 
 
 def prompt(options)
-  @table = (1 .. 9).to_a
+  @table = (1..9).to_a
   user1_team = user1_choice(@xo)
   if user1_team == options[0]
     options[1]
   else user1_team == options[1]
     options[0]
+  end
+  puts '1.cpu or 2.user?'
+  answer = gets.chomp
+  if answer == '1'
+    @cpu = cpu_player
   end
   puts "are you ready for the game? (Y/N)"
   answer = gets.chomp.upcase
@@ -93,6 +109,30 @@ user2_input = gets.chomp.to_s
   answers1
 end
 
+def cpu_answer()
+  user2_input = cpu_player.to_s
+    if user2_input == "1"
+      @table[0] = @player2
+    elsif user2_input == "2"
+      @table[1] = @player2
+    elsif user2_input == "3"
+      @table[2] = @player2
+    elsif user2_input == "4"
+      @table[3] = @player2
+    elsif user2_input == "5"
+      @table[4] = @player2
+    elsif user2_input == "6"
+      @table[5] = @player2
+    elsif user2_input == "7"
+      @table[6] = @player2
+    elsif user2_input == "8"
+      @table[7] = @player2
+    elsif user2_input == "9"
+      @table[8] = @player2
+    end
+    answers1
+  end
+
 def answers1()
 tictoe(@table)
 puts 'player 1 turn'
@@ -119,7 +159,11 @@ user1_input = gets.chomp.to_s
   until game_over?(@table)
   tictoe(@table)
   puts 'player 2 turn'
+  if @cpu == cpu_player
+    cpu_answer
+  else
   answers2
+end
 end
 tictoe(@table)
 end
