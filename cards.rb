@@ -37,6 +37,7 @@ require 'set'
     CARD = RANKS.product(SUITS)
 
     include Enumerable
+    attr_reader :deck
 
     def initialize()
       @deck = CARD.map {|x| Card.new(x[0], x[1])}
@@ -53,7 +54,6 @@ require 'set'
     def each
       @deck.each {|x| yield x}
     end
-    binding.pryD
 end
 
 binding.pry
