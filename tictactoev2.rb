@@ -78,11 +78,27 @@ class Input
     end
 
     def hum_v
-
+      until game_over?(@table)
+        @board = Board.new(@table)
+        player1
+          unless game_over?(@table)
+            @board = Board.new(@table)
+            player2
+          end
+        end
+        @board = Board.new(@table)
     end
 
     def hum_c
-      #human vs cpu
+      until game_over?(@table)
+        @board = Board.new(@table)
+        player1
+          unless game_over?(@table)
+            @board = Board.new(@table)
+            cpu2
+          end
+        end
+        @board = Board.new(@table)
     end
 
     def cpu_c
@@ -96,6 +112,7 @@ class Input
     end
 
     def cpu1
+      puts 'player 1 turn'
       f = @table.index(@table.sample)
       until @table.include?(f)
         f = @table.index(@table.sample)
@@ -105,6 +122,7 @@ class Input
     end
 
     def cpu2
+      puts 'player 2 turn'
       f = @table.index(@table.sample)
       until @table.include?(f)
         f = @table.index(@table.sample)
@@ -113,6 +131,61 @@ class Input
       @table.delete(f)
     end
 
+    def player1()
+      puts 'player 1 turn'
+      user1_input = gets.chomp.to_s
+        until user1_input =~ /^[1-9]$/
+          puts 'pick 1-9'
+          user1_input = gets.chomp.to_s
+        end
+        if user1_input == "1"
+          @table[0] = @player1
+        elsif user1_input == "2"
+          @table[1] = @player1
+        elsif user1_input == "3"
+          @table[2] = @player1
+        elsif user1_input == "4"
+          @table[3] = @player1
+        elsif user1_input == "5"
+          @table[4] = @player1
+        elsif user1_input == "6"
+          @table[5] = @player1
+        elsif user1_input == "7"
+          @table[6] = @player1
+        elsif user1_input == "8"
+          @table[7] = @player1
+        elsif user1_input == "9"
+          @table[8] = @player1
+        end
+    end
+
+    def player2()
+      puts 'player 2 turn'
+      user2_input = gets.chomp.to_s
+        until user2_input =~ /^[1-9]$/
+          puts 'pick 1-9'
+          user2_input = gets.chomp.to_s
+        end
+        if user2_input == "1"
+          @table[0] = @player2
+        elsif user2_input == "2"
+          @table[1] = @player2
+        elsif user2_input == "3"
+          @table[2] = @player2
+        elsif user2_input == "4"
+          @table[3] = @player2
+        elsif user2_input == "5"
+          @table[4] = @player2
+        elsif user2_input == "6"
+          @table[5] = @player2
+        elsif user2_input == "7"
+          @table[6] = @player2
+        elsif user2_input == "8"
+          @table[7] = @player2
+        elsif user2_input == "9"
+          @table[8] = @player2
+        end
+    end
 end
 
 
