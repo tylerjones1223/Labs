@@ -20,6 +20,7 @@ class Input
     @table = (1..9).to_a
     @player1 = []
     @player2 = []
+    @board = []
     prompt
   end
 
@@ -60,8 +61,21 @@ class Input
           elsif input == '3'
             cpu_c
       end
-    @board = Board.new(@table)
-  end
+    end
+
+    def win?(board)
+      WINS.any? do |x, y, z|
+      board[x] == board[y] && board[y] == board[z]
+      end
+    end
+
+    def draw?(board)
+      board.all? { |x| x.is_a? String }
+    end
+
+    def game_over?(board)
+      win?(board) || draw?(board)
+    end
 
     def hum_v
 
@@ -72,10 +86,36 @@ class Input
     end
 
     def cpu_c
-      #cpu vs cpu
+      until game_over?(@table)
+        @board = Board.new(@table)
+        cpu1
+        @board = Board.new(@table)
+        cpu2
+      end
+        @board = Board.new(@table)
+    end
+
+    def cpu1
+      f = @table.index(@table.sample)
+      until @table.include?(f)
+        f = @table.index(@table.sample)
+      end
+      @table.insert(f, @player1)
+      @table.delete(f)
+    end
+
+    def cpu2
+      f = @table.index(@table.sample)
+      until @table.include?(f)
+        f = @table.index(@table.sample)
+      end
+      @table.insert(f, @player2)
+      @table.delete(f)
     end
 
 end
+
+
 
 
 
