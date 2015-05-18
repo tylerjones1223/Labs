@@ -1,3 +1,5 @@
+require './tictactoev2'
+
 class Input
 
 
