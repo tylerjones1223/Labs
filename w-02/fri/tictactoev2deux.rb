@@ -7,6 +7,8 @@ class Input
             [0, 3, 6], [1, 4, 7], [2, 5, 8],
             [0, 4, 8], [2, 4, 6]]
 
+    attr_reader :player1, :player2, :input
+
   def initialize
     @table = (1..9).to_a
     @player1 = []
