@@ -1,0 +1,10 @@
+#Number Guessing Game
+x = rand(100)
+  puts "Take a guess."
+    y = gets.chomp.to_i
+      if {x = y}
+        put "u is ryght."
+      else puts "guess again"
+      end
+    end
+  end

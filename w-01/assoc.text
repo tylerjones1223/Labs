@@ -1,0 +1,12 @@
+assoc(obj) → an_array or nil click to toggle source
+Searches through the hash comparing obj with the key using ==. Returns the
+key-value pair (two elements array) or nil if no match is found. See Array#assoc.
+
+This was the hash method that most interested me as I was reading through trying
+to complete this assignment. It made the most sense reading through it, but I couldn't
+quite get it to work in the way it said it would.
+
+From what I'm reading, it compares objects with either 'true' or 'false'. If they match
+it throws them in an array(?) together. This seemed like the easiest way to go
+about this project since we were looking for two items that were identical, but
+here I sit banging my damn head up against this project and still haven't finished.
